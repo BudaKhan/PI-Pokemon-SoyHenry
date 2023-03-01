@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector,  } from 'react-redux';
-import {getPokemons, getTypePokemon, clearPokemons, filterByType, orderByName, filterCreate} from '../../redux/actions';
+import {getPokemons, getTypePokemon, clearPokemons, filterByType, orderByName, filterCreate, orderByAttack} from '../../redux/actions';
 import PokeCard from '../PokeCard/PokeCard';
 import Pagination from '../Pagination/Pagination';
 import NavBar from '../NavBar/NavBar';
@@ -43,11 +43,18 @@ const Home = () => {
         setOrder(e.target.value); //seteo el orden en el estado
     }
 
+    function handleOrderByAttack(e) { //funcion para ordenar por nombre
+        dispatch(orderByAttack(e.target.value));
+        setCurrentPage(1); 
+        setOrder(e.target.value); //seteo el orden en el estado
+    }
+
+
     if(!pokemons[0]){
         return(
             <div>
                 <div className={styles.container} >
-                <NavBar /> 
+
                 <Loader/>
                 </div>  
             </div>
@@ -59,6 +66,7 @@ const Home = () => {
                     <NavBar 
                     pokeTypes={pokeTypes} 
                     orderByName={handleOrder} 
+                    orderByAttack={handleOrderByAttack}
                     filterByType={handleType}
                     filterCreate={handleDb}
                     setCurrentPage={setCurrentPage}
@@ -93,6 +101,7 @@ const Home = () => {
                     <NavBar 
                     pokeTypes={pokeTypes} 
                     orderByName={handleOrder} 
+                    orderByAttack={handleOrderByAttack}
                     filterByType={handleType}
                     filterCreate={handleDb}
                     setCurrentPage={setCurrentPage}

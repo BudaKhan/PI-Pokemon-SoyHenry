@@ -8,7 +8,8 @@ import {CREATE_POKEMON,
         ORDER_BY_NAME,
         CLEAR_DETAIL,
         CLEAR_POKEMONS,
-        FILTER_CREATE} from "./actionTypes";
+        FILTER_CREATE,
+        ORDER_BY_ATTACK} from "./actionTypes";
 
 
 export function getPokemons() {
@@ -116,5 +117,11 @@ export function clearDetail() {
 export function clearPokemons() {
     return{
         type: CLEAR_POKEMONS
+    }
+}
+export function orderByAttack(payload){
+    return{
+        type: ORDER_BY_ATTACK,
+        payload
     }
 }

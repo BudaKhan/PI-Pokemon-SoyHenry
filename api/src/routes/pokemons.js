@@ -50,7 +50,7 @@ router.get("/:id", async (req,res) => { // desde params recojo el id del pokemon
 
 router.post("/", async (req,res) => { // creo cualquier pokemon en mi bd
     try {
-        let { name, life, attack, defense, speed, height, weight, image, types} = req.body; // atributos desde el modelo
+        let { name, life, attack, defense, speed, height, weight, image,types} = req.body; // atributos desde el modelo
         const pokeDb = await Pokemon.findOne({ where:{ name: name }, include: Type})
         if (!name) return res.status(404).send("Name is required");
         !life ? life = 1 : life; 
@@ -68,7 +68,7 @@ router.post("/", async (req,res) => { // creo cualquier pokemon en mi bd
         create.addType(pokeType);
         res.status(201).send({msg: "Pokemon successfully created"}); 
     } catch (error) {
-        res.status(404).send({error: error.message}, alert("Pokemon not created"));
+        res.status(404).send({error: error.message});
     }
 });
 

@@ -24,7 +24,6 @@ const pokeInfo = async () => {
                         weight: p.weight,
                         image: p.sprites.other.home.front_default,
                         types: p.types.map((t) => t.type.name),
-                        abilities: p.abilities.map((a) => a.ability.name)
                     })
                 });
                 return array;
@@ -70,8 +69,7 @@ const namePokeInfo = async (name) => {
             speed: data.stats[5].base_stat,
             height: data.height,
             weight: data.weight,
-            types: data.types.map((t) => t.type.name),
-            abilities: data.abilities.map((a) => a.ability.name)
+            types: data.types.map((t) => t.type.name)
         }];
         return pokeName;
         } catch (error) {
@@ -93,8 +91,7 @@ const namePokeInfo = async (name) => {
             speed: data.stats[5].base_stat,
             height: data.height,
             weight: data.weight,
-            types: data.types.map((t) => t.type.name),
-            abilities: data.abilities.map((a) => a.ability.name)
+            types: data.types.map((t) => t.type.name)
         }];
         return pokeName;
         } catch (error) {
